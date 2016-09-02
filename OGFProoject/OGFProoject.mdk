@@ -112,14 +112,20 @@ Recall that $\log(1+u)=\sum_{k\geq 1}(-1)^{k+1}\,\frac{u^k}{k}$ so
 
 ~~ Math
 \begin{aligned}
-P(z) & = \exp\Bigl(\sum_m A_m\sum_{k\geq1}(-1)^{k+1}\,\frac{z^{mk}}{k}\Bigr)\\
+P(z) & = \exp\Bigl(\!sum_m A_m\sum_{k\geq1}(-1)^{k+1}\,\frac{z^{mk}}{k}\Bigr)\\
      & = \exp\Bigl(\sum_{k\geq1}\frac{(-1)^{k+1}}{k}\sum_m A_m (z^k)^m\Bigr)\\
      & = \exp\Bigl(\sum_{k\geq1}\frac{(-1)^{k+1}}{k} A(z^k)\Bigr)
 \end{aligned}
 ~~
 
-**Example 2** A composition of an integer $n$ is a sequence of positive integers $(x,1,\cdots,x_k)$ so that $\sum x_i = n. 
+**Example 2** A composition of an integer $n$ is a sequence of positive integers $(x,1,\cdots,x_k)$ so that $\sum x_i = n$. 
 
+How many compositions of $n$ are there? 
+
+A composition is sequence of integers $\geq 1$. So the OGF is
+~~ Math
+ SEQ(Z)=\frac{1}{1-Z(z)}=\frac{1}{1-\frac{1}{1-z}}.
+~~
 
 
 
