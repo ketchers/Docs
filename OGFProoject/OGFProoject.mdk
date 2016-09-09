@@ -55,7 +55,7 @@ Solving this for $B(z)$ also leads to
 B(z) = \frac{1}{1-2z}
 ~~
 
-Consider a variant of this, $B_{\leq 2}$, are the binary strings with no more than 2 consecutive $\bullet$'s. This can be described as 
+**Generalizations** Consider a variant of this, $B_{\leq 2}$, are the binary strings with no more than 2 consecutive $\bullet$'s. This can be described as 
 ~~ Math
 B_{\leq2} = \emptyset + \circ\times \cdot B_{\leq2} + \bullet\circ \cdot B_{\leq2} 
 +\bullet\bullet\circ \cdot B_{\leq2}.
@@ -73,6 +73,19 @@ B_{\leq2}(z)  = \frac{1}{1 - z - z^2 - z^3}
 
 This construction could be generalized to "no more than n consecutive $\bullet$'s", etc.
 
+
+
+**Example** A composition of an integer $n$ is a sequence of positive integers $(x_1,x_2,\cdots,x_k)$ so that $\sum x_i = n$. 
+
+How many compositions of $n$ are there? 
+
+A composition is sequence of integers $\geq 1$. That is $C=SEQ(Z_{\geq1})$, so the OGF is
+~~ Math
+ C(z)=\frac{1}{1-Z_{\geq1}(z)}=\frac{1}{1-\frac{z}{1-z}}=\frac{1-z}{1-2z}.
+~~
+**Exercise 2** Show that $[z^n]C(z)=2^{n-1}$. 
+
+
 ## Two more construction principles.
 
 ### The (finite) power set operation.
@@ -84,7 +97,6 @@ PSET(a_1,\ldots,a_n) = (\emptyset+\{a_1\})\times(\emptyset+\{a_2\})\times\cdots\
 If $P=PSET(A)$, then $P(z)=\prod(1+z)=(1+z)^n$ which we expand using the binomial expansion as $P(z)=\sum_{m=0}^nP_m z^m$ where $P_m = {n \choose m}=\frac{n!}{m!(n-m)!}$.
 
 This yields the well known result that the set of subsets of size $m$ taken from a set of size $n$ is $P_m={n\choose m}$.
-
 
 
 There are two generalizations to make. First, $A$ might contain members of different sizes. Secondly, $A$ might be infinite. To be interesting, we need the restriction that $A$ is a combinatorial class so that for each integer $n$, $\{a\in A | |a|=n\}$ is finite. If $S \subset A$, then the *size* of $S$, $|S|$, is defined as 
@@ -118,14 +130,6 @@ P(z) & = \exp\Bigl(\!sum_m A_m\sum_{k\geq1}(-1)^{k+1}\,\frac{z^{mk}}{k}\Bigr)\\
 \end{aligned}
 ~~
 
-**Example 2** A composition of an integer $n$ is a sequence of positive integers $(x,1,\cdots,x_k)$ so that $\sum x_i = n$. 
-
-How many compositions of $n$ are there? 
-
-A composition is sequence of integers $\geq 1$. So the OGF is
-~~ Math
- SEQ(Z)=\frac{1}{1-Z(z)}=\frac{1}{1-\frac{1}{1-z}}.
-~~
 
 
 
