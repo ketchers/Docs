@@ -100,10 +100,6 @@ This yields the well known result that the set of subsets of size $m$ taken from
 
 ### The (finite) multiset operation.
 
-**Generalizations**
-
-**Polya's Making Change** 
-
 
 There are two generalizations to make. First, $A$ might contain members of different sizes. Secondly, $A$ might be infinite. To be interesting, we need the restriction that $A$ is a combinatorial class so that for each integer $n$, $\{a\in A | |a|=n\}$ is finite. If $S \subset A$, then the *size* of $S$, $|S|$, is defined as 
 ~~ Math
@@ -136,7 +132,7 @@ P(z) & = \exp\Bigl(\sum_m A_m\sum_{k\geq1}(-1)^{k+1}\,\frac{z^{mk}}{k}\Bigr)\\
 \end{aligned}
 ~~
 
-
+**Polya's Making Change** 
 
 
 
