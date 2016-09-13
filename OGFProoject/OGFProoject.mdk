@@ -2,6 +2,12 @@ Title         : OGF Project
 Author        : Richard Ketchersid
 Logo          : True
 
+
+~ MathDefs
+\newcommand{\Z}{\mathbb{Z}}
+~
+
+
 [TITLE]
 
 
@@ -17,16 +23,39 @@ Simple combinatorial classes can be combined to create more complicated classes.
 * $A\times B$ is the *cross product* of $A$ and $B$, so $c\in A\times B$ iff $c = (a,b)$ where $a\in A$ and $b\in B.$ If $c=(a,b)\in A\times B$, then $|c|=|a|+|b|$. 
 * $SEQ(A)$ is the class of sequences of objects from $A$ and if $(a_1,\ldots,a_k)\in SEQ(A)$, then $|(a_1,\ldots,a_k)|=|a_1|+\cdots+|a_k|$.
 
-**Examples.** Let $A=\{\bullet\}$ and $B=\{\circ\}$ with $|\bullet|=|\circ|=1$.   
+$SEQ(A)$ has a size $0$ object we are calling $\emptyset$ or "null sequence". This is an object of size 0. We also set $A^0 = \{\emptyset\}$, this is a class containing on size 0 object.
+
+~~ Example
+Let $A=\{\bullet\}$ and $B=\{\circ\}$ with $|\bullet|=|\circ|=1$.   
 
 * $C = A+B = \{\circ, \bullet\}$, so $C$ is a class with two objects, each of size 1.
 * $D = A\times B = \{(\bullet,\circ)\}$. Rather than writing $(\bullet,\circ)$ we can just write $\bullet\circ$. So $D$ is a class with one object of size 2.
 * $A^n = A\times A \cdots \times A$ ($n$ times). So $A^n=\{\underbrace{\bullet\bullet\cdots\bullet}_{n\text{-times}}\}.$ 
 * $SEQ(A)=\{\emptyset, \bullet, \bullet\bullet,\ldots\}=\{\emptyset\}+A+A^2+\cdots$
 
+~~ Begin Note
+Note that $SEQ(\bullet)$ is a representative of the non-negative integers. We will take the non-negative integers to simply be this class and denote it $\Z^*.$ Similarly, $\Z^+=SEQ_{\geq1}(\bullet).$ 
+~~ End Note
+~~
+
+
 **Exercise** List the elements in $SEQ(\{\circ,\bullet\})$
 of size 1, 2, 3, and 4. How many elements are there in $SEQ(\{\circ,\bullet\})$ of size $n$? 
 
+
+## Change as a combinatorial class
+
+Let Nickel={5&cent;}, be the combinatorial class consisting of a single nickel whose size is 5. Define $\text{Nickels} = SEQ_{\geq1}(\text{Nickel})$ is the class of sequences of one or more nickels. The size of 5&cent;5&cent;5&cent; is naturally 15. 
+
+Similarly, there are classes Pennies, Dimes, and Quarters.
+
+Consider now the class 
+~~ Math
+\text{Change} = \text{Pennies}\times\text{Nickels}\times\text{Dimes}\times\text{Quarters}
+~~
+An object in Change might look like 1&cent;1&cent;1&cent;1&cent;1&cent;5&cent;5&cent;5&cent;10&cent;10&cent;10&cent;25&cent;25&cent;. Note that the size of this object is 100 and this is one (of many) ways to make change for &dollar;1.
+
+The goal here is to compute how many objects in Change have size 100. This will be precisely the number of ways to make change for &dollar;1.
 
 
 # Generating Functions
@@ -42,18 +71,18 @@ where $A_n$ is thus the number of objects in $A$ of size $n$. It is convenient a
 
 
 
-Perhaps simplest combinatorial class is the class consisting of a single attom $A= \{\bullet\}$ the OGF for this class is just $A(z) = z$. To build more interesting combinatorial classes and associate OGFs with them we need a few principals. 
+If $A= \{\bullet\}$ the OGF for this class is just $A(z) = z$. To build more interesting combinatorial classes and associate OGFs with them we need a few principals. 
 
 1) If $A$ and $B$ are combinatorial classes, then $A + B$ is the disjoint union of $A$ and $B$. The OGF for $A+B$ is $A(z)+B(z)$.
 2) If $A$ and $B$ are combinatorial classes, then $A\times B$ is the class of all ordered pairs $c=(a,b)$ for $a\in A$ and $b\in B$ where $|c|=|a|+|b|$. The OGF for $A\times B$ is just $A(z)\cdot B(z)$.
-3) If $A$ is a combinatorial class, then $SEQ(A)$ is the class consisting of all sequences of objects from $A$ (with repitition). The OGF for $SEQ(A)$ is $\dfrac{1}{1 - A(z)}$.
+3) If $A$ is a combinatorial class, then $SEQ(A)$ is the class consisting of all sequences of objects from $A$ (with repetition). The OGF for $SEQ(A)$ is $\dfrac{1}{1 - A(z)}$.
 
 **Exercise** Verify the three facts above.
 
 ## The integers as a combinatorial class.
-If we start with $A$ being the class with a single atom of size 1, then we can denote this by $A = \{\bullet\}$ with $|\bullet|=1$. The finite sequences from $A$, $SEQ(A)$, is  
+As discussed aove, if we start with $A$ being the class with a single object of size 1, then we can denote this by $A = \{\bullet\}$ with $|\bullet|=1$. The finite sequences from $A$, $SEQ(A)$, is  
 ~~ Math
-  SEQ(\bullet) = \emptyset,  \bullet,  \bullet\bullet, \bullet\bullet\bullet, \cdots
+  \Z^* = SEQ(\bullet) = \emptyset,  \bullet,  \bullet\bullet, \bullet\bullet\bullet, \cdots
 ~~
 
 Here $\emptyset$ denotes the *null* object with size 0, so the OGF for $E = \{\emptyset\}$ is simply $E(z) = z^0 = 1$.
@@ -63,8 +92,8 @@ We know that if $Z=SEQ(\bullet)$, then
 Z(z) = \sum_{n=0}^\infty  z^n = \frac{1}{1 - z}
 ~~
 
-## Binary strings as a combinatorial class.
-Start with two atoms, each of size 1, $A = \{\circ,\bullet\}$. The OGF for $A$ is $z + z=2z$. A binary string, $B$,  is just a sequence of atoms from $A$. That is
+~~ Begin Example
+Start with two objects, each of size 1, $A = \{\circ,\bullet\}$. The OGF for $A$ is $z + z=2z$. A binary string, $B$,  is just a sequence of atoms from $A$. That is
 ~~ Math
 B = SEQ(\circ,\bullet)=SEQ(A)
 ~~
@@ -82,6 +111,7 @@ Solving this for $B(z)$ also leads to
 ~~ Math
 B(z) = \frac{1}{1-2z}
 ~~
+~~ End Example
 
 **Generalizations** Consider a variant of this, $B_{\leq 2}$, are the binary strings with no more than 2 consecutive $\bullet$'s. This can be described as 
 ~~ Math
@@ -103,7 +133,8 @@ This construction could be generalized to "no more than n consecutive $\bullet$'
 
 
 
-**Example** A composition of an integer $n$ is a sequence of positive integers $(x_1,x_2,\cdots,x_k)$ so that $\sum x_i = n$. 
+~~ Begin Example 
+A composition of an integer $n$ is a sequence of positive integers $(x_1,x_2,\cdots,x_k)$ so that $\sum x_i = n$. 
 
 How many compositions of $n$ are there? 
 
@@ -111,56 +142,15 @@ A composition is sequence of integers $\geq 1$. That is $C=SEQ(Z_{\geq1})$, so t
 ~~ Math
  C(z)=\frac{1}{1-Z_{\geq1}(z)}=\frac{1}{1-\frac{z}{1-z}}=\frac{1-z}{1-2z}.
 ~~
-**Exercise 2** Show that $[z^n]C(z)=2^{n-1}$. 
+**Exercise** Show that $[z^n]C(z)=2^{n-1}$. 
+~~ End Example
 
+# Polya's Making Change
 
-## Two more construction principles.
-
-### The (finite) power set operation.
-
-Given a class of atoms, $A=\{a_1,...,a_n\}$, each of size 1. $PSET(A)$, the *(finite) power set* of $A$, is recursively generated by
+It should be clear now that if $A = \{a\}$ and $|a|=k$ and if $B=SEQ(A)$, then 
 ~~ Math
-PSET(a_1,\ldots,a_n) = (\emptyset+\{a_1\})\times(\emptyset+\{a_2\})\times\cdots\times(\emptyset + \{a_n\})
+B(z) = \frac{1}{1-z^k}
 ~~
-If $P=PSET(A)$, then $P(z)=\prod(1+z)=(1+z)^n$ which we expand using the binomial expansion as $P(z)=\sum_{m=0}^nP_m z^m$ where $P_m = {n \choose m}=\frac{n!}{m!(n-m)!}$.
-
-This yields the well known result that the set of subsets of size $m$ taken from a set of size $n$ is $P_m={n\choose m}$.
-
-### The (finite) multiset operation.
-
-
-There are two generalizations to make. First, $A$ might contain members of different sizes. Secondly, $A$ might be infinite. To be interesting, we need the restriction that $A$ is a combinatorial class so that for each integer $n$, $\{a\in A | |a|=n\}$ is finite. If $S \subset A$, then the *size* of $S$, $|S|$, is defined as 
-~~ Math
-|S|=\sum_{a\in S}|a|.
-~~    
-We have 
-~~ Math
-P_{\leq n} = \{S\subset A||S|\leq n\} = \prod_{\substack{a\in A\\|a|\leq n}}(\emptyset+\{a\})
-~~
-So 
-~~ Math
-P_{\leq n}(z)=\prod_{m\leq n}(1+z^m)^{A_m}
-~~
-This allows us to formally define
-~~ Math
-P=PSET(A)=\prod_{a\in A}(\emptyset + \{a\})\text{, with }
-P(z)=\prod_{m}(1+z^m)^{A_m} 
-~~
-We can use the *exp-log* trick to get
-~~ Math
-P(z) = \exp\Bigl(\sum_m A_m\log(1+z^m)\Bigr)
-~~
-Recall that $\log(1+u)=\sum_{k\geq 1}(-1)^{k+1}\,\frac{u^k}{k}$ so
-
-~~ Math
-\begin{aligned}
-P(z) & = \exp\Bigl(\sum_m A_m\sum_{k\geq1}(-1)^{k+1}\,\frac{z^{mk}}{k}\Bigr)\\
-     & = \exp\Bigl(\sum_{k\geq1}\frac{(-1)^{k+1}}{k}\sum_m A_m (z^k)^m\Bigr)\\
-     & = \exp\Bigl(\sum_{k\geq1}\frac{(-1)^{k+1}}{k} A(z^k)\Bigr) 
-\end{aligned}
-~~
-
-**Polya's Making Change** 
 
 
 
