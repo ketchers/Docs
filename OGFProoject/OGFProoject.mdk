@@ -45,15 +45,15 @@ of size 1, 2, 3, and 4. How many elements are there in $SEQ(\{\circ,\bullet\})$ 
 
 ## Change as a combinatorial class
 
-Let Nickel={5&cent;}, be the combinatorial class consisting of a single nickel whose size is 5. Define $\text{Nickels} = SEQ_{\geq1}(\text{Nickel})$ is the class of sequences of one or more nickels. The size of 5&cent;5&cent;5&cent; is naturally 15. 
+Let NICKEL={5&cent;}, be the combinatorial class consisting of a single nickel whose size is 5. Define $\text{NICKELS} = SEQ_{\geq1}(\text{NICKEL})$ is the class of sequences of one or more nickels. The size of 5&cent;5&cent;5&cent; is naturally 15. 
 
-Similarly, there are classes Pennies, Dimes, and Quarters.
+Similarly, there are classes PENNIES, DIMES, and QUARTERS.
 
 Consider now the class 
 ~~ Math
-\text{Change} = \text{Pennies}\times\text{Nickels}\times\text{Dimes}\times\text{Quarters}
+\text{CHANGE} = \text{PENNIES}\times\text{NICKELS}\times\text{DIMES}\times\text{QUARTERS}
 ~~
-An object in Change might look like 1&cent;1&cent;1&cent;1&cent;1&cent;5&cent;5&cent;5&cent;10&cent;10&cent;10&cent;25&cent;25&cent;. Note that the size of this object is 100 and this is one (of many) ways to make change for &dollar;1.
+An object in CHANGE might look like 1&cent;1&cent;1&cent;1&cent;1&cent;5&cent;5&cent;5&cent;10&cent;10&cent;10&cent;25&cent;25&cent;. Note that the size of this object is 100 and this is one (of many) ways to make change for &dollar;1.
 
 The goal here is to compute how many objects in Change have size 100. This will be precisely the number of ways to make change for &dollar;1.
 
@@ -75,7 +75,7 @@ If $A= \{\bullet\}$ the OGF for this class is just $A(z) = z$. To build more int
 
 1) If $A$ and $B$ are combinatorial classes, then $A + B$ is the disjoint union of $A$ and $B$. The OGF for $A+B$ is $A(z)+B(z)$.
 2) If $A$ and $B$ are combinatorial classes, then $A\times B$ is the class of all ordered pairs $c=(a,b)$ for $a\in A$ and $b\in B$ where $|c|=|a|+|b|$. The OGF for $A\times B$ is just $A(z)\cdot B(z)$.
-3) If $A$ is a combinatorial class, then $SEQ(A)$ is the class consisting of all sequences of objects from $A$ (with repetition). The OGF for $SEQ(A)$ is $\dfrac{1}{1 - A(z)}$.
+3) If $A$ is a combinatorial class, then $SEQ(A)$ is the class consisting of all sequences of objects from $A$ (with repetition). The OGF for $SEQ(A)$ is $\frac{1}{1 - A(z)}$.
 
 **Exercise** Verify the three facts above.
 
@@ -147,10 +147,53 @@ A composition is sequence of integers $\geq 1$. That is $C=SEQ(Z_{\geq1})$, so t
 
 # Polya's Making Change
 
+The problem here is to find how many distinct ways there are to make change for &dollar;1 using pennies, nickels, dimes, and quarters. Order does not matter, so for example, 
+
+> 5&cent; 5&cent; 5&cent; 10&cent; 25&cent; 25&cent; 25&cent; 
+
+is the same as 
+
+>25&cent; 5&cent; 5&cent; 25&cent; 25&cent; 10&cent; 5&cent; 
+
+in any case these are 3&times;5&cent;, 1&times;10&cent;, and 3&times;25&cent;.  
+
 It should be clear now that if $A = \{a\}$ and $|a|=k$ and if $B=SEQ(A)$, then 
 ~~ Math
-B(z) = \frac{1}{1-z^k}
+B(z) = \frac{1}{1-z^k}=1+z^k+z^{2k}+z^{3k}\cdots
 ~~
+Thus the OGF for the class DIMES is $D(z)=\frac{1}{1-z^{10}}$ and similarly for the rest of the classes PENNIES, NICKELS, and QUARTERS. Hence, the OGF for the class CHANGE is:
+
+~~ Equation {#eq-change}
+\begin{aligned} 
+C(z)&=\frac{1}{1-z}\frac{1}{1-z^5}\frac{1}{1-z^{10}}\frac{1}{1-z^{25}}
+    =\frac{1}{(1-z)(1-z^5)(1-z^{10})(1-z^{25})}\\
+    &=(1+z+z^2+\cdots)(1 + z^5 + z^{10} + \cdots)(1 + z^{10}+z^{20}+\cdots)(
+      1+z^{25}+z^{50} + \cdots)
+\end{aligned}
+~~
+So our goal is to find $[z^{100}]C(z)$.
+
+With SAGE the following code extracts the answer.
+
+``` python
+  p(z) = sum([z**i for i in range(101)])
+  n(z) = sum([z**(5*i) for i in range(101) if 5*i <= 100])
+  d(z) = sum([z**(10*i) for i in range(101) if 10*i <= 100])
+  q(z) = sum([z**(25*i) for i in range(101) if 25*i <= 100])
+  r(z) = (p*q*d*n).expand()
+  r.coefficient(z^100)
+```
+
+Now we can play with variants. 
+
+1) Suppose you must use at least one coin of each type.
+2) Suppose you must use more than one coin of each type.
+3) Suppose dimes were replaced with 20&cent; coins.
+4) ...
+
+
+
+# Generalization
 
 
 
