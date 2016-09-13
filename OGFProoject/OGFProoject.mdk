@@ -24,8 +24,10 @@ Simple combinatorial classes can be combined to create more complicated classes.
 * $A^n = A\times A \cdots \times A$ ($n$ times). So $A^n=\{\underbrace{\bullet\bullet\cdots\bullet}_{n\text{-times}}\}.$ 
 * $SEQ(A)=\{\emptyset, \bullet, \bullet\bullet,\ldots\}=\{\emptyset\}+A+A^2+\cdots$
 
-**Exercise** How many elements are there in $SEQ(\{\circ,\bullet\})$ of size $n$? List the elements in $SEQ(\{\circ,\bullet\})$
-of size 1, 2, 3, and 4.
+**Exercise** List the elements in $SEQ(\{\circ,\bullet\})$
+of size 1, 2, 3, and 4. How many elements are there in $SEQ(\{\circ,\bullet\})$ of size $n$? 
+
+
 
 # Generating Functions
 A *combinatorial class* A is a set of objects where each object, a, has a size function denoted |a|. The *ordinary generating function (OGF)* for the class A is denoted A(z) and is defined as the *formal power series*
