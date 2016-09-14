@@ -1,4 +1,9 @@
-Title         : OGF Project Foo
+<!-- begin merge (remove this line to resolve the conflict) -->
+~ Begin Remote
+Title         : OGF Project Food and water
+~ End Remote
+Title         : OGF notProject
+<!-- end merge -->
 Author        : Richard Ketchersid
 Logo          : True
 
