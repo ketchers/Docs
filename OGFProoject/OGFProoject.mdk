@@ -14,7 +14,7 @@ Logo          : True
 
 # Combinatorial Classes
 
-A *combinatorial class*, $A$, is simply a set of objects ans a size function denoted $|a|$ for $a$ in $A$. 
+A *combinatorial class*, $A$, is simply a set of objects and a size function denoted $|a|$ for $a$ in $A$. 
 
 The simplest example is a class with one objects of size 1. This can be denoted $A=\{\bullet\}$ where $|\bullet|=1$. 
 
