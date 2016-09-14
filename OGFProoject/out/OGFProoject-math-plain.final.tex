@@ -157,12 +157,12 @@ $SEQ(\{\circ,\bullet\})$\end{mdInlineSnippet}%mdk
 \begin{mdInlineSnippet}[7b8b965ad4bca0e41ab51de7b31363a1]%mdk
 $n$\end{mdInlineSnippet}%mdk
 %mdk-data-line={48}
-\begin{mdInlineSnippet}[a9f9459e0e3bae64e4637ffdcd2bf0fc]%mdk
-$\text{Nickels} = SEQ_{\geq1}(\text{Nickel})$\end{mdInlineSnippet}%mdk
+\begin{mdInlineSnippet}[87e47479257d1b8279f6dc526dbdd10d]%mdk
+$\text{NICKELS} = SEQ_{\geq1}(\text{NICKEL})$\end{mdInlineSnippet}%mdk
 %mdk-data-line={52}
-\begin{mdDisplaySnippet}[16c02250a182f57f74549aa786743b30]%mdk
+\begin{mdDisplaySnippet}[9d316fd89176a19114c12915c75a078f]%mdk
 \[%mdk-data-line={54}
-\text{Change} = \text{Pennies}\times\text{Nickels}\times\text{Dimes}\times\text{Quarters}
+\text{CHANGE} = \text{PENNIES}\times\text{NICKELS}\times\text{DIMES}\times\text{QUARTERS}
 \]%mdk
 \end{mdDisplaySnippet}%mdk
 %mdk-data-line={62}
@@ -262,8 +262,8 @@ $A$\end{mdInlineSnippet}%mdk
 \begin{mdInlineSnippet}[edac6dbdab4a05aebbbf0829418e74cf]%mdk
 $SEQ(A)$\end{mdInlineSnippet}%mdk
 %mdk-data-line={78}
-\begin{mdInlineSnippet}[6712fc2def5bb343689af1269bce9b61]%mdk
-$\dfrac{1}{1 - A(z)}$\end{mdInlineSnippet}%mdk
+\begin{mdInlineSnippet}[5e0c64cda64f38ee860a0ae281da675f]%mdk
+$\frac{1}{1 - A(z)}$\end{mdInlineSnippet}%mdk
 %mdk-data-line={83}
 \begin{mdInlineSnippet}[7fc56270e7a70fa81a5935b72eacbe29]%mdk
 $A$\end{mdInlineSnippet}%mdk
@@ -412,22 +412,39 @@ $C=SEQ(Z_{\geq1})$\end{mdInlineSnippet}%mdk
 %mdk-data-line={145}
 \begin{mdInlineSnippet}[4bb8eae0518784707e4f9d6a8d60e295]%mdk
 $[z^n]C(z)=2^{n-1}$\end{mdInlineSnippet}%mdk
-%mdk-data-line={150}
+%mdk-data-line={160}
 \begin{mdInlineSnippet}[0f5695a0c392b0bcdebbee6d6e48b350]%mdk
 $A = \{a\}$\end{mdInlineSnippet}%mdk
-%mdk-data-line={150}
+%mdk-data-line={160}
 \begin{mdInlineSnippet}[e31c10af4905b6559cccc31dfc787d29]%mdk
 $|a|=k$\end{mdInlineSnippet}%mdk
-%mdk-data-line={150}
+%mdk-data-line={160}
 \begin{mdInlineSnippet}[15af214fd464bd95c3425b8abb68159e]%mdk
 $B=SEQ(A)$\end{mdInlineSnippet}%mdk
-%mdk-data-line={150}
-\begin{mdDisplaySnippet}[5a91c5a1042bcd37541be1d48b31a869]%mdk
-\[%mdk-data-line={152}
-B(z) = \frac{1}{1-z^k}
+%mdk-data-line={160}
+\begin{mdDisplaySnippet}[2cc085062a5d5fdd1b53de2a587a4fce]%mdk
+\[%mdk-data-line={162}
+B(z) = \frac{1}{1-z^k}=1+z^k+z^{2k}+z^{3k}\cdots
 \]%mdk
 \end{mdDisplaySnippet}%mdk
-%mdk-data-line={289}
+%mdk-data-line={164}
+\begin{mdInlineSnippet}[04ee590a0ebdb0df132fd60f8888cffe]%mdk
+$D(z)=\frac{1}{1-z^{10}}$\end{mdInlineSnippet}%mdk
+%mdk-data-line={166}
+\begin{mdDisplaySnippet}[2e6e301c4cec00c0d0a1ae25194b04dd]%mdk
+\[%mdk-data-line={167}
+\begin{aligned} 
+C(z)&=\frac{1}{1-z}\frac{1}{1-z^5}\frac{1}{1-z^{10}}\frac{1}{1-z^{25}}
+    =\frac{1}{(1-z)(1-z^5)(1-z^{10})(1-z^{25})}\\
+    &=(1+z+z^2+\cdots)(1 + z^5 + z^{10} + \cdots)(1 + z^{10}+z^{20}+\cdots)(
+      1+z^{25}+z^{50} + \cdots)
+\end{aligned}
+\]%mdk
+\end{mdDisplaySnippet}%mdk
+%mdk-data-line={174}
+\begin{mdInlineSnippet}[d01a6119f94a8fdc0d5bd229fb83ae2e]%mdk
+$[z^{100}]C(z)$\end{mdInlineSnippet}%mdk
+%mdk-data-line={332}
 
 \end{mdSnippets}
 
