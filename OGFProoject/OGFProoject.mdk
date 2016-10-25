@@ -46,15 +46,15 @@ of size 1, 2, 3, and 4. How many elements are there in $SEQ(\{\circ,\bullet\})$ 
 
 ## Change as a combinatorial class
 
-Let NICKEL={5&cent;}, be the combinatorial class consisting of a single nickel whose size is 5. Define $\text{NICKELS} = SEQ_{\geq1}(\text{NICKEL})$ is the class of sequences of one or more nickels. The size of 5&cent;5&cent;5&cent; is naturally 15. 
+Let NICKEL={5&cent;}, be the combinatorial class consisting of a single nickel whose size is 5. Define $\text{NICKELS} = SEQ(\text{NICKEL})$ is the class of sequences of zero or more nickels. The size of the object (sequence) "5&cent; 5&cent; 5&cent;" is naturally 15. 
 
 Similarly, there are classes PENNIES, DIMES, and QUARTERS.
 
 Consider now the class 
-~~ Math
+~~ Equation {#eq-change-comb}
 \text{CHANGE} = \text{PENNIES}\times\text{NICKELS}\times\text{DIMES}\times\text{QUARTERS}
 ~~
-An object in CHANGE might look like 1&cent;1&cent;1&cent;1&cent;1&cent;5&cent;5&cent;5&cent;10&cent;10&cent;10&cent;25&cent;25&cent;. Note that the size of this object is 100 and this is one (of many) ways to make change for &dollar;1.
+An object in CHANGE might look like "1&cent; 1&cent; 1&cent; 1&cent; 1&cent; 5&cent; 5&cent; 5&cent; 10&cent; 10&cent; 10&cent; 25&cent;  25&cent;". Note that the size of this object is 100 and this is one (of many) ways to make change for &dollar;1.
 
 The goal here is to compute how many objects in Change have size 100. This will be precisely the number of ways to make change for &dollar;1.
 
@@ -80,10 +80,14 @@ If $A= \{\bullet\}$ the OGF for this class is just $A(z) = z$. To build more int
 
 **Exercise** Verify the three facts above.
 
-## The integers as a combinatorial class.
-As discussed aove, if we start with $A$ being the class with a single object of size 1, then we can denote this by $A = \{\bullet\}$ with $|\bullet|=1$. The finite sequences from $A$, $SEQ(A)$, is  
+# Simple examples.
+
+~~ Begin Example {#Int; caption: "Sets of integers as  combinatorial classes"}
+
+
+As discussed above, if we start with $A$ being the class with a single object of size 1, then we can denote this by $A = \{\bullet\}$ with $|\bullet|=1$. The finite sequences from $A$, $SEQ(A)$, is  
 ~~ Math
-  \Z^* = SEQ(\bullet) = \emptyset,  \bullet,  \bullet\bullet, \bullet\bullet\bullet, \cdots
+  Z = SEQ(\bullet) = \emptyset,  \bullet,  \bullet\bullet, \bullet\bullet\bullet, \cdots
 ~~
 
 Here $\emptyset$ denotes the *null* object with size 0, so the OGF for $E = \{\emptyset\}$ is simply $E(z) = z^0 = 1$.
@@ -93,7 +97,43 @@ We know that if $Z=SEQ(\bullet)$, then
 Z(z) = \sum_{n=0}^\infty  z^n = \frac{1}{1 - z}
 ~~
 
-~~ Begin Example
+The positive integers would be 
+~~ Math
+  Z_{> 0} = SEQ_{>0}(\bullet)
+~~
+with OGF
+~~ Math
+  Z(z) - 1 = \frac{z}{1-z} 
+~~
+The even integers would be
+~~ Math
+  Even = SEQ_{\text{even}}(\bullet)
+~~
+with OGF
+~~ Math
+  z^0+z^2+\cdots = \sum_{n=0}^\infty (z^2)^n = \frac{1}{1-z^2}
+~~
+
+
+~~ End Example
+
+
+~~ Begin Example {#Compositions; caption: "Compositions of integers"}
+  
+A composition of an integer $n$ is a sequence of positive integers $(x_1,x_2,\cdots,x_k)$ so that $\sum x_i = n$. 
+
+How many compositions of $n$ are there? 
+
+A composition is sequence of integers $\geq 1$. That is $C=SEQ(Z_{\geq1})$, so the OGF is
+~~ Math
+ C(z)=\frac{1}{1-Z_{\geq1}(z)}=\frac{1}{1-\frac{z}{1-z}}=\frac{1-z}{1-2z}.
+~~
+**Exercise** Show that $[z^n]C(z)=2^{n-1}$. 
+~~ End Example
+
+
+~~ Begin Example {#BinSeq; caption: "Binary strings as a combinatorial class"}
+  
 Start with two objects, each of size 1, $A = \{\circ,\bullet\}$. The OGF for $A$ is $z + z=2z$. A binary string, $B$,  is just a sequence of atoms from $A$. That is
 ~~ Math
 B = SEQ(\circ,\bullet)=SEQ(A)
@@ -114,7 +154,10 @@ B(z) = \frac{1}{1-2z}
 ~~
 ~~ End Example
 
-**Generalizations** Consider a variant of this, $B_{\leq 2}$, are the binary strings with no more than 2 consecutive $\bullet$'s. This can be described as 
+~~ Begin Example {#BinStrGen; caption: "Generalizations"}
+
+
+Consider a variant of this, $B_{\leq 2}$, are the binary strings with no more than 2 consecutive $\bullet$'s. This can be described as 
 ~~ Math
 B_{\leq2} = \emptyset + \circ\times \cdot B_{\leq2} + \bullet\circ \cdot B_{\leq2} 
 +\bullet\bullet\circ \cdot B_{\leq2}.
@@ -128,23 +171,12 @@ which then yields
 B_{\leq2}(z)  = \frac{1}{1 - z - z^2 - z^3}
 ~~
 
-**Exercise 1** Write out the elements of $B_{\leq2}$ up to size 5, then use SAGE/Python to expand $B_{\leq2}$ as a power series centered a 0 and check that the first 5 coefficients are correct.
+**Exercise** Write out the elements of $B_{\leq2}$ up to size 5, then use SAGE/Python to expand $B_{\leq2}$ as a power series centered a 0 and check that the first 5 coefficients are correct.
 
 This construction could be generalized to "no more than n consecutive $\bullet$'s", etc.
-
-
-
-~~ Begin Example 
-A composition of an integer $n$ is a sequence of positive integers $(x_1,x_2,\cdots,x_k)$ so that $\sum x_i = n$. 
-
-How many compositions of $n$ are there? 
-
-A composition is sequence of integers $\geq 1$. That is $C=SEQ(Z_{\geq1})$, so the OGF is
-~~ Math
- C(z)=\frac{1}{1-Z_{\geq1}(z)}=\frac{1}{1-\frac{z}{1-z}}=\frac{1-z}{1-2z}.
-~~
-**Exercise** Show that $[z^n]C(z)=2^{n-1}$. 
+content
 ~~ End Example
+
 
 # Polya's Making Change
 
@@ -162,8 +194,7 @@ It should be clear now that if $A = \{a\}$ and $|a|=k$ and if $B=SEQ(A)$, then
 ~~ Math
 B(z) = \frac{1}{1-z^k}=1+z^k+z^{2k}+z^{3k}\cdots
 ~~
-Thus the OGF for the class DIMES is $D(z)=\frac{1}{1-z^{10}}$ and similarly for the rest of the classes PENNIES, NICKELS, and QUARTERS. Hence, the OGF for the class CHANGE is:
-
+Thus the OGF for the class DIMES is $D(z)=\frac{1}{1-z^{10}}$ and similarly for the rest of the classes PENNIES, NICKELS, and QUARTERS. The combinatorial class associated with CHANGE was discussed above.  OGF for the class CHANGE is:
 ~~ Equation {#eq-change}
 \begin{aligned} 
 C(z)&=\frac{1}{1-z}\frac{1}{1-z^5}\frac{1}{1-z^{10}}\frac{1}{1-z^{25}}
@@ -184,17 +215,44 @@ With SAGE the following code extracts the answer.
   r(z) = (p*q*d*n).expand()
   r.coefficient(z^100)
 ```
+A more sophisticated version that allows user to enter denominations is available [here](goo.gl/Q24yP5).
 
-Now we can play with variants. 
+The trick of Polya was the following. Suppose 
+~~ Math
+  B(z) = A(z)\cdot \dfrac{1}{1-z^m},
+~~
+then
+~~ Math
+  B(z) - B(z)\cdot z^m = A(z).
+~~
+This yields
+~~ Math
+  A_n = B_n - B_{n-m}
+~~
+or more useful
+~~ Math
+  B_n = A_n + B_{n - m}.
+~~
+So if we know $A_n$ and $B_{n-m}$, then we can recursively compute $B_n$.  
 
-1) Suppose you must use at least one coin of each type.
-2) Suppose you must use more than one coin of each type.
-3) Suppose dimes were replaced with 20&cent; coins.
-4) ...
+
+# Your goal.
+
+Pick one of the following generalizations of the "Making Change" problem and answer the following questions. 
+
+  1) Describe the corresponding combinatorial class. (As in [#eq-change-comb] above.)
+  2) Give the OGF. (As in [#eq-change] above.)
+  3) Compute number of ways to make change for &dollar;1  
+
+Generalizations:
+
+* You must use at least one coin of each type.
+* You must use more than one coin of each type.
+* Dimes are replaced with 20&cent; coins.
+* 20&cent; coins are added as an option.
 
 
 
-# Generalization
 
 
 
