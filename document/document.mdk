@@ -8,7 +8,27 @@ Logo          : True
 
 Recall *instance variables*, *class variable*, and *fields* are variables whose scope is the entire class. A local variable is one whose scope is only the current method or inner class.
 
+If we want to increment a counter inside a lambda or anonyous class we must make sure the counter is effectively final. For example
 
+``` java
+  public class efTest {
+    <T,S> T eval(Function<S,T> f, s S) {
+    return f.apply(s);
+      
+       
+  }
+  
+  
+  interface Function<S,T> {
+    T apply(s S);
+  }
+  
+  
+  
+  void do_stuff(int n) {
+    return 
+  }
+```
 
 [effectively final variables in lambdas and anonymous classes]: http://stackoverflow.com/questions/25055392/lambdas-local-variables-need-final-instance-variables-dont
 
