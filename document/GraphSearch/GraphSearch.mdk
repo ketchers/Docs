@@ -1,0 +1,42 @@
+Title         : Graph Search Project
+Author        : Richard Ketchersid
+Author        : Jonah Beaumont
+Logo          : True
+
+[TITLE]
+
+~ MathDefs
+\newcommand{\dom}[0]{\mathop{\text{dom}}}
+%\newcommand{\iff}[0]{\mathrel{\Leftrightarrow}}
+~
+
+# Search Problems
+
+Intuitively a search problem arises when some goal is to be obtained through a sequence of choices. Many games are naturally formulated as search problems. For example, Tic-Tac-Toe starts with an empty grid, then each player makes a decision about where to place an "X" or an "O" until one player reaches the goal of three "X"'s or three "O"'s in a row. Other games like chess, checkers, go, etc. are naturally represented as search problems. Other examples are, driving directions, solving puzzles, Sudoku, scheduling, computer aided driving, and on and on.
+
+Tic-Tac-Toe is a two player (adversarial) game, this is beyond what we will investigate in this project.
+
+## Formal Description
+
+A search problem formally has 4 components:
+
+ * A [*state space*](#state-space). 
+ * An [*initial state*](#initial-state).
+ * A [*transition function*](#transition-function). 
+ * A [*goal test*](#goal-test).
+
+[**State Space**]{#state-space} This is the collection of all *states* in the problem. For example, if the problem is finding the shortest route between two cities, then the cities are the states. If the problem is playing Tic-Tac-Toe, then the state space is the set of partially played filled out Tic-Tac-Toe boards. State spaces can become very large even for small problems.
+
+[**Initial State**]{#initial-state} This is simply the state from which the problem starts. For a route finding problem, this would just be the city you start in. For Sudoku, this would be the initial puzzle.
+
+[**Transition  Function**]{#transition-function} This is a mapping from pairs of states to numeric values. Call the function $T$ and let $a$ and $b$ be two states, then $T(a,b)=3$ would be read "The cost of moving from $a$ to $b$ is 3." The domain $(a,b)$ would be in the domain of $T$ only if b can be reached from $a$ in one move. 
+
+In a route finding problem, $T(a,b)$ would be the distance from $a$ to $b$ along a single road and $(a,b)$ would be in the domain of $T$ only if $a$ and $b$ are connected by a single road. In a Sudoku problem, $T(a,b)=1$ for all $a$ and $b$ that are puzzles that differ by exactly one entry. 
+
+[**Goal Test**]{#goal-test} This is the collection of states that correspond to a successful solution to the problem. For route finding, this would just be the unique target city. For Sudoku, this would be any of the possibly many correct solutions to a given Sudoku problem. 
+
+[**Search Graph**]{#search-graph} The state space and transition function together determine a weighted graph called the *search graph*. The nodes are the states and the there is a an edge $(a,b)$ from $a$ to $b$ iff $(a,b)\in \dom(T)$. Formally, this defines a weighted directed graph which can naturally occur, for example, suppose there are one-way streets to consider in the route finding problem. 
+
+[**Search Tree**]{#search-tree} The search tree associated to a search problem 
+
+
