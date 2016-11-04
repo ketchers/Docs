@@ -3,6 +3,20 @@ Author        : Richard Ketchersid
 Author        : Jonah Beaumont
 Logo          : True
 
+Package       : tikz
+TeX Header    :
+  \usetikzlibrary{arrows,shapes}
+  \tikzset{
+    treenode/.style = {align=center, inner sep=0pt, text centered,
+    font=\sffamily},
+    arn_n/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+      fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+    arn_r/.style = {treenode, circle, red, draw=red,
+      text width=1.5em, very thick},% arbre rouge noir, noeud rouge
+    arn_x/.style = {treenode, rectangle, draw=black,
+      minimum width=0.5em, minimum height=0.5em}% arbre rouge noir, nil
+  }
+
 [TITLE]
 
 ~ MathDefs
@@ -29,7 +43,7 @@ A search problem formally has 4 components:
 
 [**Initial State**]{#initial-state} This is simply the state from which the problem starts. For a route finding problem, this would just be the city you start in. For Sudoku, this would be the initial puzzle.
 
-[**Transition  Function**]{#transition-function} This is a mapping from pairs of states to numeric values. Call the function $T$ and let $a$ and $b$ be two states, then $T(a,b)=3$ would be read "The cost of moving from $a$ to $b$ is 3." The domain $(a,b)$ would be in the domain of $T$ only if b can be reached from $a$ in one move. 
+[**Transition  Function**]{#transition-function} This is a mapping from pairs of states to numeric values. Call the transition function $T$ and let $a$ and $b$ be two states, then $T(a,b)=3$ would be read "The cost of moving from $a$ to $b$ is 3." A pair of states $(a,b)$ is in the domain of $T$ if and only if state $b$ can be reached from state $a$ in one move. 
 
 In a route finding problem, $T(a,b)$ would be the distance from $a$ to $b$ along a single road and $(a,b)$ would be in the domain of $T$ only if $a$ and $b$ are connected by a single road. In a Sudoku problem, $T(a,b)=1$ for all $a$ and $b$ that are puzzles that differ by exactly one entry. 
 
@@ -40,3 +54,31 @@ In a route finding problem, $T(a,b)$ would be the distance from $a$ to $b$ along
 [**Search Tree**]{#search-tree} The search tree associated to a search problem 
 
 
+~ Snippet
+\begin{tikzpicture}[->,>=stealth,level/.style={sibling distance = 5cm/#1,
+  level distance = 1.5cm}] 
+\node [arn_n] {33}
+    child{ node [arn_r] {15} 
+            child{ node [arn_n] {10} 
+            	child{ node [arn_r] {5} edge from parent node[above left]
+                         {$x$}} %for a named pointer
+							child{ node [arn_x] {}}
+            }
+            child{ node [arn_n] {20}
+							child{ node [arn_r] {18}}
+							child{ node [arn_x] {}}
+            }                            
+    }
+    child{ node [arn_r] {47}
+            child{ node [arn_n] {38} 
+							child{ node [arn_r] {36}}
+							child{ node [arn_r] {39}}
+            }
+            child{ node [arn_n] {51}
+							child{ node [arn_r] {49}}
+							child{ node [arn_x] {}}
+            }
+		}
+; 
+\end{tikzpicture}
+~
