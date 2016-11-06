@@ -205,7 +205,7 @@ C(z)&=\frac{1}{1-z}\frac{1}{1-z^5}\frac{1}{1-z^{10}}\frac{1}{1-z^{25}}
 ~~
 So our goal is to find $[z^{100}]C(z)$.
 
-With SAGE the following code extracts the answer.
+With [SAGE](sagecell.sagemath.org) the following code extracts the answer.
 
 ``` python
   p(z) = sum([z**i for i in range(101)])
@@ -215,7 +215,10 @@ With SAGE the following code extracts the answer.
   r(z) = (p*q*d*n).expand()
   r.coefficient(z^100)
 ```
+
 A more sophisticated version that allows user to enter denominations is available [here](goo.gl/Q24yP5).
+
+## Polya's Recursive Solution
 
 The trick of Polya was the following. Suppose 
 ~~ Math
@@ -233,7 +236,64 @@ or more useful
 ~~ Math
   B_n = A_n + B_{n - m}.
 ~~
-So if we know $A_n$ and $B_{n-m}$, then we can recursively compute $B_n$.  
+So if we know $A_n$ and $B_{n-m}$, then we can recursively compute $B_n$. 
+
+~~ Begin Example
+  Let's apply this to the making change for &dollar;1 problem. Suppose first that we simply wanted the ways to make change with PENNIES and NICKLES, then we want $[z^{100}]B(z)$ where
+
+~~ Math
+  B(z) = \frac{1}{1-z}\cdot\frac{1}{1-z^5}.
+~~
+We can concentrate on $B_n$ where $n$ is a multiple of 5 ad get
+~~ Math
+  B_{5 n} = A_{5 n} + B_{5 n-5} = A_{5\cdot n} + B_{5 (n-1)},
+~~
+where $A(z)$ is the OGF for PENNIES and so $A_n = 1$ for all $n$. The pattern is clear from the first few terms 
+~ Snippet
+  \begin{align*}
+    B_0 &= 1 \\
+    B_5 &= P_5 + B_0 = 1 + 1 = 2\\ 
+    B_{10} &= P_{10} + B_5 = 1 + 2 = 3\\
+    \cdots&\\
+    B_{5 n} & = n + 1
+  \end{align*}
+~
+So it is clear that $[z^{5i}]B=i$.
+
+Now throw dimes in as well, let 
+~~ Math
+  C(z) = \frac{1}{1-z}\cdot\frac{1}{1-z^5}\cdot\frac{1}{1-z^{10}}
+~~
+We have
+~ Snippet
+  \begin{align*}
+    C_0 &= 1 \\
+    C_5 &= B_5 = 2\\ 
+    C_{10} &= B_{10} + C_0 = 3 + 1 = 4\\
+    C_{15} &= B_{15} + C_5 = 4 + 2 = 6\\
+    C_{20} &= B_{20} + C_{10} = 5 + 4 = 9\\
+    C_{25} &= B_{25} + C_{15} = 6 + 6 = 12\\
+    \cdots&\\
+  \end{align*}
+~
+The pattern is not obvious here, but this can be carried out 20 iterations until $C_{100}$ is obtained.
+
+Next throw in quarters. Let 
+~~ Math
+   D(z) = \frac{1}{1-z}\cdot\frac{1}{1-z^5}\cdot\frac{1}{1-z^{10}}
+   \cdot\frac{1}{1-z^{25}}
+~~
+Here we can get away with 4 computations
+~ Snippet
+  \begin{align*}
+    D_0 &= 1 \\
+    D_{25} &= C_{25} + D_{0} = 12 + 1 = 13\\ 
+    D_{50} &= C_{50} + D_{25} = 36 + 13 = 49\\
+    \cdots&\\
+  \end{align*}
+~
+   
+~~ End Example
 
 
 # Your goal.
@@ -248,6 +308,8 @@ Generalizations:
 
 * You must use at least one coin of each type.
 * You must use more than one coin of each type.
+* You may use no more than 5 coins of any one type.
+* You may only use pennies, dimes, and quarters. 
 * Dimes are replaced with 20&cent; coins.
 * 20&cent; coins are added as an option.
 

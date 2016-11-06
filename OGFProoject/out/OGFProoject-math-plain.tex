@@ -157,9 +157,9 @@ $SEQ(\{\circ,\bullet\})$\end{mdInlineSnippet}%mdk
 \begin{mdInlineSnippet}[7b8b965ad4bca0e41ab51de7b31363a1]%mdk
 $n$\end{mdInlineSnippet}%mdk
 %mdk-data-line={49}
-\begin{mdInlineSnippet}[87e47479257d1b8279f6dc526dbdd10d]%mdk
-$\text{NICKELS} = SEQ_{\geq1}(\text{NICKEL})$\end{mdInlineSnippet}%mdk
-%mdk-data-line={53}
+\begin{mdInlineSnippet}[f3dd242e2fb7ae34fc44f4b9eed3ae67]%mdk
+$\text{NICKELS} = SEQ(\text{NICKEL})$\end{mdInlineSnippet}%mdk
+%mdk-data-line={54}
 \begin{mdDisplaySnippet}[9d316fd89176a19114c12915c75a078f]%mdk
 \[%mdk-data-line={55}
 \text{CHANGE} = \text{PENNIES}\times\text{NICKELS}\times\text{DIMES}\times\text{QUARTERS}
@@ -455,14 +455,8 @@ B(z) = \frac{1}{1-z^k}=1+z^k+z^{2k}+z^{3k}\cdots
 \begin{mdInlineSnippet}[04ee590a0ebdb0df132fd60f8888cffe]%mdk
 $D(z)=\frac{1}{1-z^{10}}$\end{mdInlineSnippet}%mdk
 %mdk-data-line={198}
-\begin{mdDisplaySnippet}[6070848c131a1a303839483aa543cd08]%mdk
-\[%mdk-data-line={199}
-  \text{SEQ(PENNIES)} \times \text{SEQ(NICKELS)} \times \text{SEQ(DIMES)} \times \text{SEQ(QUARTERS)}  
-\]%mdk
-\end{mdDisplaySnippet}%mdk
-%mdk-data-line={202}
 \begin{mdDisplaySnippet}[2e6e301c4cec00c0d0a1ae25194b04dd]%mdk
-\[%mdk-data-line={203}
+\[%mdk-data-line={199}
 \begin{aligned} 
 C(z)&=\frac{1}{1-z}\frac{1}{1-z^5}\frac{1}{1-z^{10}}\frac{1}{1-z^{25}}
     =\frac{1}{(1-z)(1-z^5)(1-z^{10})(1-z^{25})}\\
@@ -471,28 +465,91 @@ C(z)&=\frac{1}{1-z}\frac{1}{1-z^5}\frac{1}{1-z^{10}}\frac{1}{1-z^{25}}
 \end{aligned}
 \]%mdk
 \end{mdDisplaySnippet}%mdk
-%mdk-data-line={210}
+%mdk-data-line={206}
 \begin{mdInlineSnippet}[d01a6119f94a8fdc0d5bd229fb83ae2e]%mdk
 $[z^{100}]C(z)$\end{mdInlineSnippet}%mdk
-%mdk-data-line={224}
+%mdk-data-line={220}
 \begin{mdDisplaySnippet}[4f0d9575040ca422b5e8cbe53b91dbf9]%mdk
-\[%mdk-data-line={226}
+\[%mdk-data-line={222}
   B(z) = A(z)\cdot \dfrac{1}{1-z^m},
 \]%mdk
 \end{mdDisplaySnippet}%mdk
-%mdk-data-line={228}
+%mdk-data-line={224}
 \begin{mdDisplaySnippet}[a6fb95e866a04275d0946577fb57b4f0]%mdk
-\[%mdk-data-line={230}
+\[%mdk-data-line={226}
   B(z) - B(z)\cdot z^m = A(z).
 \]%mdk
 \end{mdDisplaySnippet}%mdk
-%mdk-data-line={232}
-\begin{mdDisplaySnippet}[9614f1fa63bc76bae68810e154926b4b]%mdk
-\[%mdk-data-line={234}
-  A_n = B_n - B_
+%mdk-data-line={228}
+\begin{mdDisplaySnippet}[7d7737db137d60eac1826bc867b6ca39]%mdk
+\[%mdk-data-line={230}
+  A_n = B_n - B_{n-m}
 \]%mdk
 \end{mdDisplaySnippet}%mdk
-%mdk-data-line={390}
+%mdk-data-line={232}
+\begin{mdDisplaySnippet}[0b5732306bd8a0333d448333e4c33593]%mdk
+\[%mdk-data-line={234}
+  B_n = A_n + B_{n - m}.
+\]%mdk
+\end{mdDisplaySnippet}%mdk
+%mdk-data-line={236}
+\begin{mdInlineSnippet}[f93809ae14fb28ef6dbe11c99529c51b]%mdk
+$A_n$\end{mdInlineSnippet}%mdk
+%mdk-data-line={236}
+\begin{mdInlineSnippet}[4f15b05c907f76ff902bd69176851c0c]%mdk
+$B_{n-m}$\end{mdInlineSnippet}%mdk
+%mdk-data-line={236}
+\begin{mdInlineSnippet}[0aa82b70834da9cbe82c3cb48547a35f]%mdk
+$B_n$\end{mdInlineSnippet}%mdk
+%mdk-data-line={239}
+\begin{mdInlineSnippet}[6daaaabd410d6d7dd468c8a0fb4adc3c]%mdk
+$[z^{100}]B(z)$\end{mdInlineSnippet}%mdk
+%mdk-data-line={239}
+\begin{mdDisplaySnippet}[02501e073c2a0966a9b812e62c483b9e]%mdk
+\[%mdk-data-line={242}
+  B(z) = \frac{1}{1-z}\cdot\frac{1}{1-z^5}.
+\]%mdk
+\end{mdDisplaySnippet}%mdk
+%mdk-data-line={244}
+\begin{mdInlineSnippet}[0aa82b70834da9cbe82c3cb48547a35f]%mdk
+$B_n$\end{mdInlineSnippet}%mdk
+%mdk-data-line={244}
+\begin{mdInlineSnippet}[7b8b965ad4bca0e41ab51de7b31363a1]%mdk
+$n$\end{mdInlineSnippet}%mdk
+%mdk-data-line={244}
+\begin{mdDisplaySnippet}[6d538fbab8469074f5041dd1fc8b76c9]%mdk
+\[%mdk-data-line={246}
+  B_{5 n} = A_{5 n} + B_{5 n-5} = A_{5\cdot n} + B_{5 (n-1)},
+\]%mdk
+\end{mdDisplaySnippet}%mdk
+%mdk-data-line={248}
+\begin{mdInlineSnippet}[52808c52ba94ee30e8f04b8e649512cd]%mdk
+$A(z)$\end{mdInlineSnippet}%mdk
+%mdk-data-line={248}
+\begin{mdInlineSnippet}[cf63575c09a36b2fba6c07d03c67ecbe]%mdk
+$A_n = 1$\end{mdInlineSnippet}%mdk
+%mdk-data-line={248}
+\begin{mdInlineSnippet}[7b8b965ad4bca0e41ab51de7b31363a1]%mdk
+$n$\end{mdInlineSnippet}%mdk
+%mdk-data-line={258}
+\begin{mdInlineSnippet}[b7885e1e291b5ff7bcefb807af8fa9a8]%mdk
+$[z^{5i}]B=i$\end{mdInlineSnippet}%mdk
+%mdk-data-line={260}
+\begin{mdDisplaySnippet}[73331dc460c1dec712ff7909d2560d75]%mdk
+\[%mdk-data-line={262}
+  C(z) = \frac{1}{1-z}\cdot\frac{1}{1-z^5}\cdot\frac{1}{1-z^{10}}
+\]%mdk
+\end{mdDisplaySnippet}%mdk
+%mdk-data-line={275}
+\begin{mdInlineSnippet}[516b2ff426eec68f97c958e36176bc23]%mdk
+$C_{100}$\end{mdInlineSnippet}%mdk
+%mdk-data-line={277}
+\begin{mdDisplaySnippet}[2f293781368f9fd25807cf4526f6b58b]%mdk
+\[%mdk-data-line={279}
+   C(z) = \frac{1}{1-z}\cdot\frac{1}{1-z^5}\cdot\frac{1}{1-z^{10}}\cdo
+\]%mdk
+\end{mdDisplaySnippet}%mdk
+%mdk-data-line={439}
 
 \end{mdSnippets}
 
