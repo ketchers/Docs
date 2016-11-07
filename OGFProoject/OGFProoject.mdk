@@ -22,9 +22,9 @@ Simple combinatorial classes can be combined to create more complicated classes.
 
 * $A+B$ is the *disjoint union* of $A$ and $B$.
 * $A\times B$ is the *cross product* of $A$ and $B$, so $c\in A\times B$ iff $c = (a,b)$ where $a\in A$ and $b\in B.$ If $c=(a,b)\in A\times B$, then $|c|=|a|+|b|$. 
-* $SEQ(A)$ is the class of sequences of objects from $A$ and if $(a_1,\ldots,a_k)\in SEQ(A)$, then $|(a_1,\ldots,a_k)|=|a_1|+\cdots+|a_k|$.
+* $\text{SEQ}(A)$ is the class of sequences of objects from $A$ and if $(a_1,\ldots,a_k)\in \text{SEQ}(A)$, then $|(a_1,\ldots,a_k)|=|a_1|+\cdots+|a_k|$.
 
-$SEQ(A)$ has a size $0$ object we are calling $\emptyset$ or "null sequence". This is an object of size 0. We also set $A^0 = \{\emptyset\}$, this is a class containing on size 0 object.
+$\text{SEQ}(A)$ has a size $0$ object we are calling $\emptyset$ or "null sequence". This is an object of size 0. We also set $A^0 = \{\emptyset\}$, this is a class containing on size 0 object.
 
 ~~ Example
 Let $A=\{\bullet\}$ and $B=\{\circ\}$ with $|\bullet|=|\circ|=1$.   
@@ -32,21 +32,21 @@ Let $A=\{\bullet\}$ and $B=\{\circ\}$ with $|\bullet|=|\circ|=1$.
 * $C = A+B = \{\circ, \bullet\}$, so $C$ is a class with two objects, each of size 1.
 * $D = A\times B = \{(\bullet,\circ)\}$. Rather than writing $(\bullet,\circ)$ we can just write $\bullet\circ$. So $D$ is a class with one object of size 2.
 * $A^n = A\times A \cdots \times A$ ($n$ times). So $A^n=\{\underbrace{\bullet\bullet\cdots\bullet}_{n\text{-times}}\}.$ 
-* $SEQ(A)=\{\emptyset, \bullet, \bullet\bullet,\ldots\}=\{\emptyset\}+A+A^2+\cdots$
+* $\text{SEQ}(A)=\{\emptyset, \bullet, \bullet\bullet,\ldots\}=\{\emptyset\}+A+A^2+\cdots$
 
 ~~ Begin Note
-Note that $SEQ(\bullet)$ is a representative of the non-negative integers. We will take the non-negative integers to simply be this class and denote it $\Z^*.$ Similarly, $\Z^+=SEQ_{\geq1}(\bullet).$ 
+Note that $\text{SEQ}(\bullet)$ is a representative of the non-negative integers. We will take the non-negative integers to simply be this class and denote it $\Z^*.$ Similarly, $\Z^+=\text{SEQ}_{\geq1}(\bullet).$ 
 ~~ End Note
 ~~
 
 
-**Exercise** List the elements in $SEQ(\{\circ,\bullet\})$
-of size 1, 2, 3, and 4. How many elements are there in $SEQ(\{\circ,\bullet\})$ of size $n$? 
+**Exercise** List the elements in $\text{SEQ}(\{\circ,\bullet\})$
+of size 1, 2, 3, and 4. How many elements are there in $\text{SEQ}(\{\circ,\bullet\})$ of size $n$? 
 
 
 ## Change as a combinatorial class
 
-Let NICKEL={5&cent;}, be the combinatorial class consisting of a single nickel whose size is 5. Define $\text{NICKELS} = SEQ(\text{NICKEL})$ is the class of sequences of zero or more nickels. The size of the object (sequence) "5&cent; 5&cent; 5&cent;" is naturally 15. 
+Let NICKEL={5&cent;}, be the combinatorial class consisting of a single nickel whose size is 5. Define $\text{NICKELS} = \text{SEQ}(\text{NICKEL})$ is the class of sequences of zero or more nickels. The size of the object (sequence) "5&cent; 5&cent; 5&cent;" is naturally 15. 
 
 Similarly, there are classes PENNIES, DIMES, and QUARTERS.
 
@@ -76,7 +76,7 @@ If $A= \{\bullet\}$ the OGF for this class is just $A(z) = z$. To build more int
 
 1) If $A$ and $B$ are combinatorial classes, then $A + B$ is the disjoint union of $A$ and $B$. The OGF for $A+B$ is $A(z)+B(z)$.
 2) If $A$ and $B$ are combinatorial classes, then $A\times B$ is the class of all ordered pairs $c=(a,b)$ for $a\in A$ and $b\in B$ where $|c|=|a|+|b|$. The OGF for $A\times B$ is just $A(z)\cdot B(z)$.
-3) If $A$ is a combinatorial class, then $SEQ(A)$ is the class consisting of all sequences of objects from $A$ (with repetition). The OGF for $SEQ(A)$ is $\frac{1}{1 - A(z)}$.
+3) If $A$ is a combinatorial class, then $\text{SEQ}(A)$ is the class consisting of all sequences of objects from $A$ (with repetition). The OGF for $\text{SEQ}(A)$ is $\frac{1}{1 - A(z)}$.
 
 **Exercise** Verify the three facts above.
 
@@ -85,14 +85,14 @@ If $A= \{\bullet\}$ the OGF for this class is just $A(z) = z$. To build more int
 ~~ Begin Example {#Int; caption: "Sets of integers as  combinatorial classes"}
 
 
-As discussed above, if we start with $A$ being the class with a single object of size 1, then we can denote this by $A = \{\bullet\}$ with $|\bullet|=1$. The finite sequences from $A$, $SEQ(A)$, is  
+As discussed above, if we start with $A$ being the class with a single object of size 1, then we can denote this by $A = \{\bullet\}$ with $|\bullet|=1$. The finite sequences from $A$, $\text{SEQ}(A)$, is  
 ~~ Math
-  Z = SEQ(\bullet) = \emptyset,  \bullet,  \bullet\bullet, \bullet\bullet\bullet, \cdots
+  Z = \text{SEQ}(\bullet) = \emptyset,  \bullet,  \bullet\bullet, \bullet\bullet\bullet, \cdots
 ~~
 
 Here $\emptyset$ denotes the *null* object with size 0, so the OGF for $E = \{\emptyset\}$ is simply $E(z) = z^0 = 1$.
 
-We know that if $Z=SEQ(\bullet)$, then
+We know that if $Z=\text{SEQ}(\bullet)$, then
 ~~ Math
 Z(z) = \sum_{n=0}^\infty  z^n = \frac{1}{1 - z}
 ~~
@@ -107,7 +107,7 @@ with OGF
 ~~
 The even integers would be
 ~~ Math
-  Even = SEQ_{\text{even}}(\bullet)
+  \text{Even} = \text{SEQ}_{\text{even}}(\bullet)
 ~~
 with OGF
 ~~ Math
@@ -124,7 +124,7 @@ A composition of an integer $n$ is a sequence of positive integers $(x_1,x_2,\cd
 
 How many compositions of $n$ are there? 
 
-A composition is sequence of integers $\geq 1$. That is $C=SEQ(Z_{\geq1})$, so the OGF is
+A composition is sequence of integers $\geq 1$. That is $C=\text{SEQ}(Z_{\geq1})$, so the OGF is
 ~~ Math
  C(z)=\frac{1}{1-Z_{\geq1}(z)}=\frac{1}{1-\frac{z}{1-z}}=\frac{1-z}{1-2z}.
 ~~
@@ -136,7 +136,7 @@ A composition is sequence of integers $\geq 1$. That is $C=SEQ(Z_{\geq1})$, so t
   
 Start with two objects, each of size 1, $A = \{\circ,\bullet\}$. The OGF for $A$ is $z + z=2z$. A binary string, $B$,  is just a sequence of atoms from $A$. That is
 ~~ Math
-B = SEQ(\circ,\bullet)=SEQ(A)
+B = \text{SEQ}(\circ,\bullet)=SEQ(A)
 ~~
 and so the OGF for binary strings is 
 ~~ Math
@@ -216,7 +216,7 @@ With [SAGE](sagecell.sagemath.org) the [following](https://goo.gl/jRvEby) code e
   r.coefficient(z^100)(z)
 ```
 
-A more sophisticated version that allows user to enter different denominations easily is available [here](https://goo.gl/Q24yP5).
+A more sophisticated version that allows user to enter different denominations easily is available [here](https://goo.gl/a4S97d).
 
 ## Polya's Recursive Solution {#polya}
 
@@ -309,9 +309,8 @@ Here we can get away with 4 computations
 ~~ Begin Example
   Here are a couple of examples: 
 
-  * How many ways are there to measure a cup with a teaspoon, tablespoon, and 1/3 cup measure?
+  * How many ways are there to measure a cup with a teaspoon, tablespoon (3 tsp), and 1/4 cup (12 tsp) measure?
   * How many ways are there to split up a group of 99 kids into groups of size 3, 7, and 11?
-
 
 ~~ End Example
 
