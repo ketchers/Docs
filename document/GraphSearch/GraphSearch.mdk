@@ -4,18 +4,11 @@ Author        : Jonah Beaumont
 Logo          : True
 
 Package       : tikz
+Package       : tkz-graph
 TeX Header    :
   \usetikzlibrary{arrows,shapes}
-  \tikzset{
-    treenode/.style = {align=center, inner sep=0pt, text centered,
-    font=\sffamily},
-    arn_n/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
-      fill=black, text width=1.5em},% arbre rouge noir, noeud noir
-    arn_r/.style = {treenode, circle, red, draw=red,
-      text width=1.5em, very thick},% arbre rouge noir, noeud rouge
-    arn_x/.style = {treenode, rectangle, draw=black,
-      minimum width=0.5em, minimum height=0.5em}% arbre rouge noir, nil
-  }
+  \usetikzlibrary{graphdrawing, graphs}
+  \usegdlibrary{force, trees, layered}
 
 [TITLE]
 
@@ -54,31 +47,48 @@ In a route finding problem, $T(a,b)$ would be the distance from $a$ to $b$ along
 [**Search Tree**]{#search-tree} The search tree associated to a search problem 
 
 
+~~ Begin Example
+
+Here is a simple graph. We would like to get from the Start state to the Goal state via the a length path.   
+~~ Center
+
 ~ Snippet
-\begin{tikzpicture}[->,>=stealth,level/.style={sibling distance = 5cm/#1,
-  level distance = 1.5cm}] 
-\node [arn_n] {33}
-    child{ node [arn_r] {15} 
-            child{ node [arn_n] {10} 
-            	child{ node [arn_r] {5} edge from parent node[above left]
-                         {$x$}} %for a named pointer
-							child{ node [arn_x] {}}
-            }
-            child{ node [arn_n] {20}
-							child{ node [arn_r] {18}}
-							child{ node [arn_x] {}}
-            }                            
-    }
-    child{ node [arn_r] {47}
-            child{ node [arn_n] {38} 
-							child{ node [arn_r] {36}}
-							child{ node [arn_r] {39}}
-            }
-            child{ node [arn_n] {51}
-							child{ node [arn_r] {49}}
-							child{ node [arn_x] {}}
-            }
-		}
-; 
+\begin{tikzpicture}
+ \SetUpEdge[lw         = 1.5pt,
+            color      = orange,
+            labelcolor = lightgray]
+  \GraphInit[vstyle=Normal] 
+  \SetGraphUnit{4}
+  \tikzset{VertexStyle/.append  style={fill}}
+  \Vertex{Start} \EA(Start){C}   \EA(C){F}
+  \SO(Start){A}  \SO(C){D}   \SO(F){G}
+  \SO(A){B}  \SO(D){E}   \SO(G){Goal}
+  \tikzset{EdgeStyle/.style={-}}
+  \Edge[label=$3$](Start)(A)
+  \Edge[label=$1$](Start)(C)
+  \Edge[label=$10$](A)(B)
+  \Edge[label=$2$](C)(D)
+  \Edge[label=$3$](D)(E)
+  \Edge[label=$3$](B)(E)
+  \Edge[label=$3$](A)(D)
+  \Edge[label=$2$](E)(Goal)
+  \Edge[label=$4$](F)(G)
+  \Edge[label=$1$](D)(G)
+  \Edge[label=$2$](C)(F)
+  \Edge[label=$3$](G)(Goal)
 \end{tikzpicture}
 ~
+~~
+Boo
+~~ Center
+~ Snippet
+  \begin{tikzpicture}[spring layout, >=latex', grow = right]
+  \graph {
+	  b ->[edge label = 1] a [circle, red, draw];
+  };
+\end{tikzpicture}
+~
+~~
+
+~~ End Example
+Other stuff is down here
